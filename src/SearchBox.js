@@ -9,7 +9,7 @@ const SearchBox = ({ searchChange }) => {
 		//tachyons is being used for quick shorthand styling
 		className="pa3 ba b--green bg-lightest-blue"
 		placeholder='search robots'
-		onChange={searchChange}
+		onChange={searchChange} //can use html attributes but needs to be camelCase
 		 />
 	  </div>
 	);
