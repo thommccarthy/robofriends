@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import CardList from './CardList';
 import SearchBox from './SearchBox';
-import { robots } from './robots'; //destructuring, .js is implied
-
+import './App.css';
+import Scroll from './Scroll';
 //STATE
 //1. acts like a memory
 //2. an object that describes the application
@@ -15,30 +15,46 @@ import { robots } from './robots'; //destructuring, .js is implied
 //the use of state requires class
 //constructor function that pulls "Component" Object from react
 class App extends Component { //destructured, implies React.Component
-  constructor() {
+  constructor() {//lifecycle hook
   	super() //calls the constructor
   	this.state = {
-  		robots: robots, 
+  		robots: [], 
   		searchfield: ''
   	}
   }
+
+componentDidMount() {
+	fetch('http://jsonplaceholder.typicode.com/users')
+	.then(response=> {
+		return response.json();
+	})
+	 .then(users => {
+	this.setState({ robots: users })
+	});
+	 
+}
 
 onSearchChange = (event) => { //always use arrow function for method creation inside object
 	this.setState({ searchfield: event.target.value })
 }
 
-  render() {
+  render() {//lifecycle hook - every time state changes, render is run again
   		const filteredRobots = this.state.robots.filter(robots =>{
 		return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
 		})
-
+  		if (this.state.robots.length === 0) {
+  			return <h1>Loading</h1>
+  		} else{
 		return (
 		<div className="tc">
-			<h1>robofriends</h1>
+			<h1 className="f1">ROBOFRIENDS</h1>
 			<SearchBox searchChange={this.onSearchChange}/>
-			<CardList robots={ filteredRobots }/>
+			<Scroll>
+				<CardList robots={ filteredRobots }/>
+			</Scroll>
 		</div>
 	);
+  }
   }
 }
 

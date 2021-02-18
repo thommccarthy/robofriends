@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './App.css';
 import reportWebVitals from './reportWebVitals';
 import Card from './Card';
-import App from './App';
+import App from './App'; //usually main component name
 import 'tachyons';
 import { robots } from './robots';
+
 
 
 ReactDOM.render(<App />,  document.getElementById('root'));
