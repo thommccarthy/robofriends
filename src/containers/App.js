@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import CardList from './CardList';
-import SearchBox from './SearchBox';
+import CardList from '../components/CardList';
+import SearchBox from '../components/SearchBox';
 import './App.css';
-import Scroll from './Scroll';
+import Scroll from '../components/Scroll';
 //STATE
 //1. acts like a memory
 //2. an object that describes the application
@@ -38,13 +38,13 @@ onSearchChange = (event) => { //always use arrow function for method creation in
 	this.setState({ searchfield: event.target.value })
 }
 
-  render() {//lifecycle hook - every time state changes, render is run again
-  		const filteredRobots = this.state.robots.filter(robots =>{
-		return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
-		})
-  		if (this.state.robots.length === 0) {
-  			return <h1>Loading</h1>
-  		} else{
+render() {//lifecycle hook - every time state changes, render is run again
+  const filteredRobots = this.state.robots.filter(robots =>{
+	return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+	})
+  	if (this.state.robots.length === 0) {
+  		return <h1>Loading</h1>
+  		} else {
 		return (
 		<div className="tc">
 			<h1 className="f1">ROBOFRIENDS</h1>
@@ -53,15 +53,10 @@ onSearchChange = (event) => { //always use arrow function for method creation in
 				<CardList robots={ filteredRobots }/>
 			</Scroll>
 		</div>
-	);
-  }
+	  );
+    }
   }
 }
 
-//exports from the
+//export
 export default App;
-
-
-// below are components which have been imported
-			// when referencing a method within the scope of 
-			// an object, you must reference the object with "this"

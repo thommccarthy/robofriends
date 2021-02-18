@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './App.css';
+import './containers/App.css';
 import reportWebVitals from './reportWebVitals';
-import Card from './Card';
-import App from './App'; //usually main component name
+import Card from './components/Card';
+import App from './containers/App'; //usually main component name
 import 'tachyons';
-import { robots } from './robots';
+
 
 
 
