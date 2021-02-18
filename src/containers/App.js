@@ -25,7 +25,7 @@ class App extends Component { //destructured, implies React.Component
   }
 
 componentDidMount() {
-	fetch('http://jsonplaceholder.typicode.com/users')
+	fetch('https://jsonplaceholder.typicode.com/users')
 	.then(response=> {
 		return response.json();
 	})
