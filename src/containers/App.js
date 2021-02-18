@@ -3,6 +3,7 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import './App.css';
 import Scroll from '../components/Scroll';
+import ErrorBoundary from "../components/ErrorBoundary";
 //STATE
 //1. acts like a memory
 //2. an object that describes the application
@@ -50,7 +51,9 @@ render() {//lifecycle hook - every time state changes, render is run again
 			<h1 className="f1">ROBOFRIENDS</h1>
 			<SearchBox searchChange={this.onSearchChange}/>
 			<Scroll>
+				<ErrorBoundary>
 				<CardList robots={ filteredRobots }/>
+				</ErrorBoundary>
 			</Scroll>
 		</div>
 	  );
